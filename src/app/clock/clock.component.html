@@ -1,0 +1,18 @@
+<div class="clock">
+  <span
+    *ngFor="let num of numbers"
+    [style.transform]="
+      'translate(-50%, -50%) rotate(' + num * (360 / 12) + 'deg)'
+    "
+  >
+    <i
+      [style.transform]="
+        'translateY(-24vmin) rotate(' + num * -(360 / 12) + 'deg)'
+      "
+      >{{ num }}</i
+    >
+  </span>
+  <div class="h"></div>
+  <div class="m"></div>
+  <div class="s"></div>
+</div>

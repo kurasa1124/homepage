@@ -1,0 +1,77 @@
+@import "~@angular/material/theming";
+
+::ng-deep {
+  mat-flat-tree-picker {
+    > .mat-tree-picker-panel
+      > mat-tree-picker-node-list
+      > .mat-tree-picker-node-list {
+      box-shadow: none !important;
+      width: 100%;
+    }
+  }
+
+  mat-tree-picker-node-list {
+    .mat-tree-picker-node-list {
+      border-radius: 2px;
+      display: inline-block;
+      background-color: #424242;
+
+      .mat-menu-content {
+        position: relative;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        transform-origin: left top 0px;
+        max-height: calc(100vh);
+        min-width: 112px;
+        max-width: 280px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  mat-tree-picker-node {
+    cursor: pointer;
+    display: block;
+    line-height: 48px;
+    min-height: 48px;
+    padding: 0 16px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s linear;
+
+    [disabled] {
+      cursor: default;
+    }
+
+    mat-icon.mat-icon {
+      line-height: 48px;
+      vertical-align: top;
+    }
+
+    &:hover {
+      background-color: #494949;
+    }
+
+    &.has-children {
+      padding-right: 32px;
+      position: relative;
+
+      &::after {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-color: transparent transparent transparent currentColor;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

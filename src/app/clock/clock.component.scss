@@ -1,0 +1,70 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  width: 60vmin;
+  height: 60vmin;
+  background: #fff;
+  border-radius: 50%;
+  border: 1em solid #ddd;
+  position: relative;
+  box-shadow: 3vmin 3vmin 6vmin #000;
+  span {
+    font-size: 2rem;
+    font-weight: black;
+    color: #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    i {
+      display: block;
+    }
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    z-index: 10;
+  }
+}
+
+.h,
+.m,
+.s {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:after {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 30%;
+    background: #000;
+    transform: translateY(-50%);
+  }
+}
+
+.h:after {
+  height: 20%;
+}
+
+.s:after {
+  width: 1px;
+  height: 40%;
+}

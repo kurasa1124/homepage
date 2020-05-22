@@ -1,0 +1,59 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$bg-light: #253249;
+$bg-dark: #1c2536;
+
+$custom-primary: mat-palette($mat-blue-grey, 300);
+$custom-accent: mat-palette($mat-indigo);
+$custom-warn: mat-palette($mat-red);
+
+$mat-gosu-theme-background: (
+  status-bar: black,
+  app-bar: map_get($mat-grey, 900),
+  background: $bg-dark,
+  hover: rgba(black, 0.2),
+  card: map_get($mat-grey, 900),
+  dialog: $bg-light,
+  disabled-button: rgba(white, 0.12),
+  raised-button: map-get($mat-grey, 900),
+  focused-button: $light-focused,
+  selected-button: map_get($mat-grey, 900),
+  selected-disabled-button: map_get($mat-grey, 900),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-grey, 700),
+  disabled-list-option: black,
+);
+
+$mat-gosu-theme-foreground: (
+  base: white,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+@function mat-gosu-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: true,
+    foreground: $mat-gosu-theme-foreground,
+    background: $mat-gosu-theme-background
+  );
+}
+
+$custom-theme: mat-gosu-theme($custom-primary, $custom-accent, $custom-warn);
+
+@include angular-material-theme($custom-theme);
