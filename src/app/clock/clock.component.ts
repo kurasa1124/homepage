@@ -26,7 +26,7 @@ export class ClockComponent implements AfterViewInit {
     min.style.transform = `rotate(${mRotate}deg)`;
 
     let hour = document.querySelector(".h") as HTMLElement;
-    let hRotate = (((360 / 12) * time.getHours()) / 60) * time.getMinutes();
+    let hRotate = (360 / 12) * time.getHours() + mRotate / 12;
     hour.style.transform = `rotate(${hRotate}deg)`;
 
     window.requestAnimationFrame(() => this._rotateClock());
