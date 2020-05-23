@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="nail"></div>
+  <div class="rotate">
+    <div class="lights" *ngIf="game">
+      <span
+        class="light"
+        [class.isRolling]="game.isRolling"
+        *ngFor="let i of lights"
+        [ngStyle]="{ transform: setLight(lights, i) }"
+      >
+        <i
+          [ngStyle]="{
+            opacity: lightOn(i),
+            boxShadow: lightOn(i) == 0.3 ? 'none' : '0 0 2vmin 0.5vmin #fff'
+          }"
+        ></i>
+      </span>
+    </div>
+    <div #roulette class="roulette">
+      <span
+        *ngFor="let slice of game?.slices"
+        [ngStyle]="{ transform: setLight(game?.slices, slice.id - 1) }"
+      >
+        <b>{{ slice.word }}</b>
+      </span>
+    </div>
+    <div
+      class="center"
+      (click)="game.start()"
+      [class.disabled]="game?.isRolling"
+    >
+      {{ !game?.isRolling ? "START" : game?.pointAt.word }}
+    </div>
+  </div>
+</div>

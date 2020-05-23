@@ -1,8 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ClockComponent } from "./clock/clock.component";
+import { RouletteComponent } from "./roulette/roulette.component";
 
-const routes: Routes = [{ path: "clock", component: ClockComponent }];
+const routes: Routes = [
+  { path: "clock", component: ClockComponent },
+  { path: "roulette", component: RouletteComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

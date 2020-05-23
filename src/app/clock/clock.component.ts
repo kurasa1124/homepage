@@ -1,17 +1,22 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "app-clock",
   templateUrl: "./clock.component.html",
   styleUrls: ["./clock.component.scss"],
 })
-export class ClockComponent implements AfterViewInit {
+export class ClockComponent implements AfterViewInit, OnDestroy {
   public numbers = new Array(12).fill(0).map((e, i) => i + 1);
+  private timer;
 
   constructor() {}
 
   ngAfterViewInit() {
     this._rotateClock();
+  }
+
+  ngOnDestroy() {
+    cancelAnimationFrame(this.timer);
   }
 
   private _rotateClock() {
@@ -29,6 +34,6 @@ export class ClockComponent implements AfterViewInit {
     let hRotate = (360 / 12) * time.getHours() + mRotate / 12;
     hour.style.transform = `rotate(${hRotate}deg)`;
 
-    window.requestAnimationFrame(() => this._rotateClock());
+    this.timer = requestAnimationFrame(() => this._rotateClock());
   }
 }

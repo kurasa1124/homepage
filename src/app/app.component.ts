@@ -10,5 +10,8 @@ type Menu = { text: string; router: string };
 export class AppComponent {
   title = "homepage";
 
-  public mainMenu: Menu[] = [{ text: "CLOCK", router: "clock" }];
+  public mainMenu: Menu[] = [
+    { text: "CLOCK", router: "clock" },
+    { text: "ROULETTE", router: "roulette" },
+  ];
 }
