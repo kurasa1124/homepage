@@ -68,7 +68,7 @@ export class Roulette {
     requestAnimationFrame(() => {
       this._speed -= (this._speed / this.speed) * 2;
       if (this._speed <= 0.1) this.stop();
-      if (this.isRolling) this.slowdown();
+      else this.slowdown();
     });
   }
 
