@@ -21,7 +21,6 @@ export class RouletteComponent implements AfterViewInit {
 
   public resetGame(num: number) {
     if (!num) return;
-    if (this.game && num == this.game.sliceAmount) return;
     let start = Math.floor(Math.random() * 360);
     let speed = Math.random() * 3 * 10 + 35;
     this.game = new Roulette(
@@ -41,7 +40,6 @@ export class RouletteComponent implements AfterViewInit {
     let el = this.roulette.nativeElement as HTMLElement;
     let bg = this.game.slices.map((slice, i) => {
       let angle = (100 / this.game.slices.length) * (i + 1);
-      let length = this.game.slices.length;
       return `${slice.color} 0 ${angle}%`;
     });
     el.style.backgroundImage = `conic-gradient(${bg.join(",")})`;
