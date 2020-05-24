@@ -1,4 +1,16 @@
 <div class="main">
+  <div class="controler">
+    <label>獎品數量：</label>
+    <mat-form-field>
+      <input
+        matInput
+        #num
+        value="5"
+        type="number"
+        (change)="resetGame(num.valueAsNumber)"
+      />
+    </mat-form-field>
+  </div>
   <div class="nail"></div>
   <div class="rotate">
     <div class="lights" *ngIf="game">

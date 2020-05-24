@@ -37,7 +37,7 @@ export class Roulette {
       new Array(this.sliceAmount).fill(0).map((slice, i) => {
         let id = i + 1;
         let angle = (360 / this.sliceAmount) * i;
-        let color = randomcolor({ luminosity: "light" });
+        let color = randomcolor({ luminosity: "dark" });
         let word = id + "獎";
         return { id, angle, color, word };
       })
