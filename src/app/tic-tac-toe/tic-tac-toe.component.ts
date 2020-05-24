@@ -38,21 +38,19 @@ export class TicTacToeComponent implements OnInit {
     );
 
     this.isWin = this._judgeWin(this.ooxx);
-
     if (this.isWin === null) this._computerTurn(num);
   }
 
   private async _computerTurn(num) {
     this.isYou = false;
-
     await sleep(500);
 
     let ooxx = this.ooxx.join(",").split(",");
     let willWin = ooxx
-      .map((n, idx) => this._findWillWin(idx, "false"))
+      .map((x, idx) => this._findWillWin(idx, "false"))
       .find((d) => d !== null);
     let willFail = ooxx
-      .map((n, idx) => this._findWillWin(idx, "true"))
+      .map((o, idx) => this._findWillWin(idx, "true"))
       .find((d) => d !== null);
 
     if (willWin) this._resist(willWin);
