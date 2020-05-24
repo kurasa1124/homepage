@@ -12,6 +12,13 @@ export class TicTacToeComponent implements OnInit {
 
   public ooxx: boolean[][];
 
+  public get isPlaying() {
+    let ooxx = this.ooxx.join(",").split(",");
+    let hasOX = ooxx.find((ox) => !!ox);
+    if (hasOX) return true;
+    return false;
+  }
+
   constructor() {
     this.reset();
   }
@@ -38,12 +45,12 @@ export class TicTacToeComponent implements OnInit {
     );
 
     this.isWin = this._judgeWin(this.ooxx);
-    if (this.isWin === null) this._computerTurn(num);
+    if (this.isWin === null) this.computerTurn();
   }
 
-  private async _computerTurn(num) {
+  public async computerTurn() {
     this.isYou = false;
-    await sleep(500);
+    if (this.isPlaying) await sleep(500);
 
     let ooxx = this.ooxx.join(",").split(",");
     let willWin = ooxx
@@ -53,9 +60,9 @@ export class TicTacToeComponent implements OnInit {
       .map((o, idx) => this._findWillWin(idx, "true"))
       .find((d) => d !== null);
 
-    if (willWin) this._resist(willWin);
-    else if (willFail) this._resist(willFail);
-    else this._goNext();
+    if (typeof willWin == "number") this._resist(willWin);
+    else if (typeof willFail == "number") this._resist(willFail);
+    else this._goRandom();
 
     this.isWin = this._judgeWin(this.ooxx);
   }
@@ -72,16 +79,12 @@ export class TicTacToeComponent implements OnInit {
     this.isYou = true;
   }
 
-  private _goNext() {
-    this.ooxx = this.ooxx.map((row, rowIdx) =>
-      row.map((col, colIdx) => {
-        let idx = rowIdx * 3 + colIdx;
-        if (col !== null || this.isYou) return col;
-        col = false;
-        this.isYou = true;
-        return col;
-      })
-    );
+  private _goRandom() {
+    let ooxx = this.ooxx.join(",").split(",");
+    let empty = ooxx.map((ox, i) => (!ox ? i : null)).filter((i) => i !== null);
+    let random = Math.floor(Math.random() * empty.length);
+    let idx = empty[random];
+    this._resist(idx);
   }
 
   private _findWillWin(idx, turn: string) {

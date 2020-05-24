@@ -1,4 +1,7 @@
 <h1>{{ isYou ? "YOUR TURN" : "MY TURN" }}</h1>
+<button mat-raised-button (click)="computerTurn()" [disabled]="isPlaying">
+  COMPUTER FIRST
+</button>
 <div class="ooxx">
   <ul *ngFor="let row of ooxx; index as rowIdx">
     <li
