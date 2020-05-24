@@ -13,5 +13,6 @@ export class AppComponent {
   public mainMenu: Menu[] = [
     { text: "CLOCK", router: "clock" },
     { text: "ROULETTE", router: "roulette" },
+    { text: "TIC TAC TOE", router: "tic-tac-toe" },
   ];
 }

@@ -1,0 +1,21 @@
+<h1>{{ isYou ? "YOUR TURN" : "MY TURN" }}</h1>
+<div class="ooxx">
+  <ul *ngFor="let row of ooxx; index as rowIdx">
+    <li
+      *ngFor="let col of row; index as colIdx"
+      [class.disabled]="!isYou || col != null"
+      (click)="select(rowIdx * 3 + colIdx)"
+    >
+      <span class="oo" [style.opacity]="col === true ? 1 : false"
+        >panorama_fish_eye</span
+      >
+      <span class="xx" [style.opacity]="col === false ? 1 : false">close</span>
+    </li>
+  </ul>
+</div>
+
+<div class="cover" *ngIf="isWin" (click)="reset()">
+  <h1>
+    {{ isWin == "true" ? "YOU WIN" : isWin == "tie" ? "WE TIED" : "YOU LOSE" }}
+  </h1>
+</div>

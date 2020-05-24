@@ -6,9 +6,10 @@ import { AppComponent } from "./app.component";
 import { ClockComponent } from "./clock/clock.component";
 import { RouletteComponent } from "./roulette/roulette.component";
 import { SharedMaterialModule } from "./shared-material/shared-material.module";
+import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 
 @NgModule({
-  declarations: [AppComponent, ClockComponent, RouletteComponent],
+  declarations: [AppComponent, ClockComponent, RouletteComponent, TicTacToeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

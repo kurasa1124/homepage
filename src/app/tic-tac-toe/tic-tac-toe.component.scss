@@ -1,0 +1,69 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: bolder;
+  margin-top: -1.5em;
+}
+
+.ooxx {
+  width: 60vmin;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  cursor: pointer;
+  width: 19vmin;
+  height: 19vmin;
+  margin: 0.5vmin;
+  border-radius: 2vmin;
+  background: rgba(white, 0.75);
+  position: relative;
+  &.disabled {
+    pointer-events: none;
+  }
+  &:hover {
+    .oo {
+      opacity: 1;
+    }
+  }
+}
+
+.oo,
+.xx {
+  font-family: "Material Icons";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15vmin;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: rgba(black, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
