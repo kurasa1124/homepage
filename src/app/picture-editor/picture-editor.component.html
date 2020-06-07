@@ -1,0 +1,16 @@
+<canvas
+  #canvas
+  [width]="element.nativeElement.offsetWidth"
+  [height]="element.nativeElement.offsetHeight"
+  [style.cursor]="cursor"
+></canvas>
+
+<button class="upload" (click)="file.click()" *ngIf="!pictures.length">
+  請上傳一張圖片
+</button>
+<input
+  #file
+  type="file"
+  accept="image/*"
+  (change)="uploadFiles($event.target.files)"
+/>

@@ -14,5 +14,6 @@ export class AppComponent {
     { text: "CLOCK", router: "clock" },
     { text: "ROULETTE", router: "roulette" },
     { text: "TIC TAC TOE", router: "tic-tac-toe" },
+    { text: "PICTURE EDITOR", router: "pic-editor" },
   ];
 }
