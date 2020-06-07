@@ -67,10 +67,8 @@ export class PictureEditorComponent implements AfterViewInit, OnDestroy {
       .subscribe((event: MouseEvent) => {
         let select = this.pictures.find((pic) => pic.isSelect);
         if (!select) this.cursor = "default";
-        else {
+        else
           this.cursor = findCursor(event.offsetX, event.offsetY, select.rect);
-          this._drawCanvas();
-        }
       });
   }
 
@@ -116,6 +114,9 @@ export class PictureEditorComponent implements AfterViewInit, OnDestroy {
           let pic = new Picture(canvas, img);
           pic.rect = { x, y, width, height };
           pic.isSelect = idx == imgFiles.length - 1;
+          pic.onChanged$
+            .pipe(takeUntil(this._destroy$))
+            .subscribe(() => this._drawCanvas());
           this.pictures.push(pic);
         };
       })

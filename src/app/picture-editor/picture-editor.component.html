@@ -5,7 +5,7 @@
   [style.cursor]="cursor"
 ></canvas>
 
-<button class="upload" (click)="file.click()" *ngIf="!pictures.length">
+<button class="upload" (click)="file.click()" [class.small]="pictures.length">
   請上傳一張圖片
 </button>
 <input

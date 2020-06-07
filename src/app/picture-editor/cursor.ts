@@ -15,7 +15,7 @@ export function findCursor(x: number, y: number, rect: Rect) {
     rect.y,
     rect.y + rect.height,
   ];
-  let isMove = x > left && x < right && y > top && y < bottom;
+  let isMove = x > left - 5 && x < right + 5 && y > top - 5 && y < bottom + 5;
   let isEw = (x > left - 5 && x < left + 5) || (x < right + 5 && x > right - 5);
   let isNs = (y > top - 5 && y < top + 5) || (y < bottom + 5 && y > bottom - 5);
   let isNesw =
@@ -25,15 +25,14 @@ export function findCursor(x: number, y: number, rect: Rect) {
     (x < right + 5 && x > right - 5 && y < bottom + 5 && y > bottom - 5) ||
     (x > left - 5 && x < left + 5 && y > top - 5 && y < top + 5);
   switch (true) {
-    case isNesw:
+    case isMove && isNesw:
       return "nesw-resize";
-    case isNwse:
+    case isMove && isNwse:
       return "nwse-resize";
-    case isEw:
+    case isMove && isEw:
       return "ew-resize";
-    case isNs:
+    case isMove && isNs:
       return "ns-resize";
-
     case isMove:
       return "move";
     default:

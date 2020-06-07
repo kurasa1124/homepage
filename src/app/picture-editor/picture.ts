@@ -1,4 +1,4 @@
-import { fromEvent } from "rxjs";
+import { fromEvent, Subject } from "rxjs";
 import { filter, map, mergeMap, takeUntil, tap } from "rxjs/operators";
 import { deepClone } from "../shared/deepClone";
 import { Cursor, findCursor } from "./cursor";
@@ -14,6 +14,7 @@ export class Picture {
   public isSelect: boolean = false;
   public start: Rect;
   public rect: Rect;
+  public onChanged$ = new Subject();
   constructor(public canvas: HTMLCanvasElement, public img: HTMLImageElement) {
     this._dragEvent();
   }
@@ -44,6 +45,7 @@ export class Picture {
       .subscribe((move) => {
         if (move.cursor == "move") this._move(move);
         else this._resize(move);
+        this.onChanged$.next();
       });
   }
 
